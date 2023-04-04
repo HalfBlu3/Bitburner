@@ -1,4 +1,4 @@
-/** @param {NS} ns */
+
 export async function main(ns) {
 
 	class server{
@@ -10,23 +10,23 @@ export async function main(ns) {
 	}
 
 	const color = {
-		black: "\u001b[30m",
-		red: "\u001b[31m",
-		green: "\u001b[32m",
-		yellow: "\u001b[33m",
-		blue: "\u001b[34m",
-		magenta: "\u001b[35m",
-		cyan: "\u001b[36m",
-		white: "\u001b[37m",
-		brightBlack: "\u001b[30;1m",
-		brightRed: "\u001b[31;1m",
-		brightGreen: "\u001b[32;1m",
-		brightYellow: "\u001b[33;1m",
-		brightBlue: "\u001b[34;1m",
-		brightMagenta: "\u001b[35;1m",
-		brightCyan: "\u001b[36;1m",
-		brightWhite: "\u001b[37;1m",
-		reset: "\u001b[0m"
+		black: "[30m",
+		red: "[31m",
+		green: "[32m",
+		yellow: "[33m",
+		blue: "[34m",
+		magenta: "[35m",
+		cyan: "[36m",
+		white: "[37m",
+		brightBlack: "[30;1m",
+		brightRed: "[31;1m",
+		brightGreen: "[32;1m",
+		brightYellow: "[33;1m",
+		brightBlue: "[34;1m",
+		brightMagenta: "[35;1m",
+		brightCyan: "[36;1m",
+		brightWhite: "[37;1m",
+		reset: "[0m"
 	}
 	ns.run("autocrack.js", 1);
 	var queue = [];
@@ -58,7 +58,7 @@ export async function main(ns) {
 		var s="";
 		for (var ii=0; ii<finish[i].getDepth();ii++) s +=("|    ");
 		if (finish[i].getName() == "home"){
-			ns.tprint(`${color["white"]}`+"home")
+			ns.tprint(`${color["white"]}`+"home");
 		} else if (ns.read("whitelist.txt").split(",").includes(finish[i].getName()) || finish[i].getName().includes("hacknet-server")){
 			ns.tprint(`${color["cyan"]}`+s+finish[i].getName());
 		} else {
@@ -105,28 +105,3 @@ export async function main(ns) {
 		}
 	}
 }
-/*
-	//how we count servers, basically the same code as the printing code
-	async function countServers(){
-        //different var names to make sure we don't call the wrong var
-		var found = [];
-		var todo = [];
-		todo.push("home");
-		while (todo.length > 0){
-			var r = todo.length-1;
-			var results = [];
-			results = ns.scan(todo[r]);
-			if (!found.includes(todo[r])){
-				found.push(todo[r]);
-			}
-			for (var i=0; i < results.length; i++){
-				if (!(found.includes(results[i])||todo.includes(results[i]))){
-					todo.push(results[i]);
-				}
-			}
-			todo.splice(r, 1);
-		}
-        //return the count
-		return found.length;
-	}
-*/
