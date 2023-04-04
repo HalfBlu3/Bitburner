@@ -17,7 +17,7 @@ export async function main(ns) {
 					}
 				}
 				ns.tprint(output);
-				ns.scriptKill("findserver.js", ns.getHostname());
+				ns.scriptKill("find.js", ns.getHostname());
 			}
 			if (!parent.includes(list[i])) {
 				look(list[i], string);
